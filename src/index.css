@@ -2,129 +2,81 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Messaging Dashboard Design System - Modern Glassmorphism Theme */
+/* Clean & Classic Messaging Dashboard Design System */
 
 @layer base {
   :root {
-    /* Primary Brand Colors */
-    --primary: 220 91% 60%;
-    --primary-foreground: 0 0% 100%;
-    --primary-glow: 220 91% 70%;
+    /* Clean Color Palette */
+    --primary: 220 13% 18%;
+    --primary-foreground: 0 0% 98%;
     
     /* Background System */
-    --background: 240 20% 99%;
-    --background-secondary: 240 20% 96%;
-    --foreground: 240 10% 9%;
+    --background: 0 0% 100%;
+    --background-secondary: 0 0% 98%;
+    --foreground: 220 13% 18%;
     
     /* Surface Colors */
     --surface: 0 0% 100%;
-    --surface-elevated: 240 20% 98%;
-    --surface-glass: 240 20% 99% / 0.8;
+    --surface-secondary: 220 13% 97%;
     
     /* Card System */
-    --card: 0 0% 100% / 0.9;
-    --card-foreground: 240 10% 9%;
-    --card-border: 240 20% 90%;
+    --card: 0 0% 100%;
+    --card-foreground: 220 13% 18%;
+    --card-border: 220 13% 91%;
     
     /* Interactive Elements */
-    --accent: 220 91% 60%;
-    --accent-foreground: 0 0% 100%;
-    --accent-hover: 220 91% 55%;
+    --accent: 220 13% 18%;
+    --accent-foreground: 0 0% 98%;
+    --accent-hover: 220 13% 25%;
     
     /* Message Bubbles */
-    --message-sent: 220 91% 60%;
-    --message-sent-foreground: 0 0% 100%;
-    --message-received: 240 20% 96%;
-    --message-received-foreground: 240 10% 15%;
-    
-    /* Status Colors */
-    --success: 142 76% 36%;
-    --success-foreground: 0 0% 100%;
-    --warning: 38 92% 50%;
-    --warning-foreground: 0 0% 100%;
-    --destructive: 0 84% 60%;
-    --destructive-foreground: 0 0% 100%;
+    --message-sent: 220 13% 18%;
+    --message-sent-foreground: 0 0% 98%;
+    --message-received: 220 13% 95%;
+    --message-received-foreground: 220 13% 18%;
     
     /* Neutral System */
-    --muted: 240 20% 95%;
-    --muted-foreground: 240 5% 45%;
-    --border: 240 20% 90%;
-    --input: 240 20% 94%;
-    --ring: 220 91% 60%;
+    --muted: 220 13% 95%;
+    --muted-foreground: 220 9% 46%;
+    --border: 220 13% 91%;
+    --input: 220 13% 94%;
+    --ring: 220 13% 18%;
     
     /* Sidebar */
-    --sidebar-background: 240 20% 97%;
-    --sidebar-foreground: 240 10% 15%;
-    --sidebar-border: 240 20% 88%;
-    
-    /* Glassmorphism Effects */
-    --glass-backdrop: blur(20px);
-    --glass-border: 0 0% 100% / 0.2;
-    --shadow-glass: 0 8px 32px 0 rgba(0, 0, 0, 0.1);
-    --shadow-elevated: 0 10px 40px -10px rgba(0, 0, 0, 0.15);
-    
-    /* Animation Variables */
-    --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    --transition-bounce: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
-    
-    /* Spacing & Layout */
-    --radius: 1rem;
-    --radius-sm: 0.75rem;
-    --radius-lg: 1.5rem;
-
-    --sidebar-background: 0 0% 98%;
-
-    --sidebar-foreground: 240 5.3% 26.1%;
-
-    --sidebar-primary: 240 5.9% 10%;
-
-    --sidebar-primary-foreground: 0 0% 98%;
-
-    --sidebar-accent: 240 4.8% 95.9%;
-
-    --sidebar-accent-foreground: 240 5.9% 10%;
-
+    --sidebar-background: 220 13% 97%;
+    --sidebar-foreground: 220 13% 18%;
     --sidebar-border: 220 13% 91%;
-
-    --sidebar-ring: 217.2 91.2% 59.8%;
+    
+    /* Clean Shadows */
+    --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+    --shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
+    --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+    
+    /* Typography */
+    --radius: 0.5rem;
   }
 
   .dark {
-    --background: 222.2 84% 4.9%;
-    --foreground: 210 40% 98%;
-
-    --card: 222.2 84% 4.9%;
-    --card-foreground: 210 40% 98%;
-
-    --popover: 222.2 84% 4.9%;
-    --popover-foreground: 210 40% 98%;
-
-    --primary: 210 40% 98%;
-    --primary-foreground: 222.2 47.4% 11.2%;
-
-    --secondary: 217.2 32.6% 17.5%;
-    --secondary-foreground: 210 40% 98%;
-
-    --muted: 217.2 32.6% 17.5%;
-    --muted-foreground: 215 20.2% 65.1%;
-
-    --accent: 217.2 32.6% 17.5%;
-    --accent-foreground: 210 40% 98%;
-
-    --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 210 40% 98%;
-
-    --border: 217.2 32.6% 17.5%;
-    --input: 217.2 32.6% 17.5%;
-    --ring: 212.7 26.8% 83.9%;
-    --sidebar-background: 240 5.9% 10%;
-    --sidebar-foreground: 240 4.8% 95.9%;
-    --sidebar-primary: 224.3 76.3% 48%;
-    --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 240 3.7% 15.9%;
-    --sidebar-accent-foreground: 240 4.8% 95.9%;
-    --sidebar-border: 240 3.7% 15.9%;
-    --sidebar-ring: 217.2 91.2% 59.8%;
+    --background: 220 13% 9%;
+    --foreground: 0 0% 98%;
+    --card: 220 13% 12%;
+    --card-foreground: 0 0% 98%;
+    --card-border: 220 13% 20%;
+    --primary: 0 0% 98%;
+    --primary-foreground: 220 13% 18%;
+    --accent: 0 0% 98%;
+    --accent-foreground: 220 13% 18%;
+    --muted: 220 13% 15%;
+    --muted-foreground: 220 9% 60%;
+    --border: 220 13% 20%;
+    --input: 220 13% 15%;
+    --message-sent: 0 0% 98%;
+    --message-sent-foreground: 220 13% 18%;
+    --message-received: 220 13% 15%;
+    --message-received-foreground: 0 0% 98%;
+    --sidebar-background: 220 13% 12%;
+    --sidebar-foreground: 0 0% 98%;
+    --sidebar-border: 220 13% 20%;
   }
 }
 
@@ -135,107 +87,54 @@
 
   body {
     @apply bg-background text-foreground font-sans;
+    font-feature-settings: "rlig" 1, "calt" 1;
   }
 }
 
 @layer components {
-  /* Glassmorphism Base */
-  .glass {
-    background: hsl(var(--surface-glass));
-    backdrop-filter: var(--glass-backdrop);
-    border: 1px solid hsl(var(--glass-border));
-    box-shadow: var(--shadow-glass);
-  }
-  
-  .glass-elevated {
-    background: hsl(var(--surface-elevated));
-    backdrop-filter: var(--glass-backdrop);
+  /* Clean Card Styles */
+  .card-clean {
+    background: hsl(var(--card));
     border: 1px solid hsl(var(--card-border));
-    box-shadow: var(--shadow-elevated);
+    box-shadow: var(--shadow-sm);
   }
   
-  /* Message Bubble Animations */
-  .message-enter {
-    animation: messageSlideIn 0.3s ease-out;
+  .card-elevated {
+    background: hsl(var(--card));
+    border: 1px solid hsl(var(--card-border));
+    box-shadow: var(--shadow-md);
   }
   
-  .message-exit {
-    animation: messageSlideOut 0.3s ease-out;
-  }
-  
-  /* Smooth Transitions */
-  .transition-smooth {
-    transition: var(--transition-smooth);
-  }
-  
-  .transition-bounce {
-    transition: var(--transition-bounce);
+  /* Simple Transitions */
+  .transition-all {
+    transition: all 0.2s ease-in-out;
   }
   
   /* Hover Effects */
-  .hover-lift {
-    @apply transition-smooth;
+  .hover-bg:hover {
+    background-color: hsl(var(--muted));
   }
   
-  .hover-lift:hover {
-    transform: translateY(-2px);
-    box-shadow: var(--shadow-elevated);
+  .hover-shadow:hover {
+    box-shadow: var(--shadow);
   }
   
-  /* Contact Item Hover */
-  .contact-hover {
-    @apply transition-smooth;
-  }
-  
-  .contact-hover:hover {
-    background: hsl(var(--surface-elevated));
-    transform: translateX(4px);
-  }
-}
-
-@layer utilities {
-  .scrollbar-thin {
+  /* Clean scrollbar */
+  .scrollbar-clean {
     scrollbar-width: thin;
     scrollbar-color: hsl(var(--muted)) transparent;
   }
   
-  .scrollbar-thin::-webkit-scrollbar {
+  .scrollbar-clean::-webkit-scrollbar {
     width: 6px;
   }
   
-  .scrollbar-thin::-webkit-scrollbar-track {
+  .scrollbar-clean::-webkit-scrollbar-track {
     background: transparent;
   }
   
-  .scrollbar-thin::-webkit-scrollbar-thumb {
+  .scrollbar-clean::-webkit-scrollbar-thumb {
     background: hsl(var(--muted));
     border-radius: 3px;
-  }
-  
-  .scrollbar-thin::-webkit-scrollbar-thumb:hover {
-    background: hsl(var(--muted-foreground));
-  }
-}
-
-/* Keyframes */
-@keyframes messageSlideIn {
-  from {
-    opacity: 0;
-    transform: translateY(20px) scale(0.95);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0) scale(1);
-  }
-}
-
-@keyframes messageSlideOut {
-  from {
-    opacity: 1;
-    transform: translateY(0) scale(1);
-  }
-  to {
-    opacity: 0;
-    transform: translateY(-20px) scale(0.95);
   }
 }

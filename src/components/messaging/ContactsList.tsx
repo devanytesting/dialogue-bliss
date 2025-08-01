@@ -38,23 +38,23 @@ function ContactCard({ contact, isSelected, onClick }: {
   return (
     <div
       className={`
-        p-4 cursor-pointer contact-hover rounded-lg border transition-smooth
+        p-3 cursor-pointer rounded-lg border transition-all
         ${isSelected 
-          ? 'bg-accent/10 border-accent shadow-md' 
-          : 'border-transparent hover:border-card-border'
+          ? 'bg-muted border-border' 
+          : 'border-transparent hover:bg-muted/50'
         }
       `}
       onClick={onClick}
     >
       <div className="flex items-center gap-3">
         <div className="relative">
-          <Avatar className="w-12 h-12">
+          <Avatar className="w-10 h-10">
             <AvatarImage src={contact.avatar} alt={contact.name} />
-            <AvatarFallback className="bg-accent text-accent-foreground font-semibold">
+            <AvatarFallback className="bg-muted text-foreground font-medium">
               {contact.name.split(' ').map(n => n[0]).join('')}
             </AvatarFallback>
           </Avatar>
-          <div className={`absolute -bottom-1 -right-1 w-4 h-4 ${getStatusColor(contact.status)} rounded-full border-2 border-surface`} />
+          <div className={`absolute -bottom-0.5 -right-0.5 w-3 h-3 ${getStatusColor(contact.status)} rounded-full border-2 border-surface`} />
         </div>
         
         <div className="flex-1 min-w-0">
@@ -77,10 +77,10 @@ export function ContactsList({
   onSearchChange 
 }: ContactsListProps) {
   return (
-    <div className="w-80 bg-surface border-r border-card-border flex flex-col">
+    <div className="w-72 bg-surface border-r border-card-border flex flex-col">
       {/* Header */}
-      <div className="p-6 border-b border-card-border">
-        <h2 className="text-xl font-bold text-foreground mb-4">Messages</h2>
+      <div className="p-4 border-b border-card-border">
+        <h2 className="text-lg font-semibold text-foreground mb-3">Messages</h2>
         
         {/* Search Bar */}
         <div className="relative">
@@ -89,13 +89,13 @@ export function ContactsList({
             placeholder="Search contacts..."
             value={searchTerm}
             onChange={(e) => onSearchChange(e.target.value)}
-            className="pl-10 bg-background-secondary border-border focus:border-accent transition-smooth"
+            className="pl-9 bg-input border-border focus:border-ring"
           />
         </div>
       </div>
       
       {/* Contacts List */}
-      <div className="flex-1 overflow-y-auto scrollbar-thin p-4 space-y-2">
+      <div className="flex-1 overflow-y-auto scrollbar-clean p-3 space-y-1">
         {contacts.length > 0 ? (
           contacts.map((contact) => (
             <ContactCard

@@ -30,10 +30,10 @@ function MenuItem({ icon: Icon, label, isActive = false, onClick }: MenuItemProp
             variant="ghost"
             size="icon"
             className={`
-              w-12 h-12 rounded-xl transition-smooth hover-lift
+              w-11 h-11 rounded-lg transition-all
               ${isActive 
-                ? 'bg-accent text-accent-foreground shadow-lg' 
-                : 'text-muted-foreground hover:text-foreground hover:bg-surface-elevated'
+                ? 'bg-accent text-accent-foreground' 
+                : 'text-muted-foreground hover:text-foreground hover:bg-muted'
               }
             `}
             onClick={onClick}
@@ -41,7 +41,7 @@ function MenuItem({ icon: Icon, label, isActive = false, onClick }: MenuItemProp
             <Icon className="h-5 w-5" />
           </Button>
         </TooltipTrigger>
-        <TooltipContent side="right" className="glass-elevated">
+        <TooltipContent side="right" className="bg-card border border-card-border shadow-md">
           <p className="font-medium">{label}</p>
         </TooltipContent>
       </Tooltip>
@@ -51,14 +51,14 @@ function MenuItem({ icon: Icon, label, isActive = false, onClick }: MenuItemProp
 
 export function MenuSidebar() {
   return (
-    <div className="w-20 bg-sidebar border-r border-sidebar-border flex flex-col items-center py-6 gap-4">
+    <div className="w-16 bg-sidebar border-r border-sidebar-border flex flex-col items-center py-4 gap-3">
       {/* Logo/Brand */}
-      <div className="w-12 h-12 bg-primary rounded-xl flex items-center justify-center mb-8 shadow-lg">
-        <MessageCircle className="h-6 w-6 text-primary-foreground" />
+      <div className="w-10 h-10 bg-primary rounded-lg flex items-center justify-center mb-6">
+        <MessageCircle className="h-5 w-5 text-primary-foreground" />
       </div>
       
       {/* Menu Items */}
-      <div className="flex flex-col gap-3">
+      <div className="flex flex-col gap-2">
         <MenuItem icon={Home} label="Home" />
         <MenuItem icon={MessageCircle} label="Chats" isActive />
         <MenuItem icon={Users} label="Contacts" />

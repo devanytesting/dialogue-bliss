@@ -74,17 +74,17 @@ export function ContactInfoPanel({ contact, onContactUpdate }: ContactInfoPanelP
   };
 
   return (
-    <div className="w-80 bg-surface border-l border-card-border flex flex-col">
+    <div className="w-72 bg-surface border-l border-card-border flex flex-col">
       {/* Header */}
-      <div className="p-6 border-b border-card-border">
-        <div className="flex items-center justify-between mb-6">
+      <div className="p-4 border-b border-card-border">
+        <div className="flex items-center justify-between mb-4">
           <h3 className="text-lg font-semibold text-foreground">Contact Info</h3>
           {!isEditing && (
             <Button
               variant="ghost"
-              size="icon"
+              size="sm"
               onClick={handleEdit}
-              className="hover-lift text-muted-foreground hover:text-foreground"
+              className="h-8 w-8 p-0 text-muted-foreground hover:text-foreground"
             >
               <Edit3 className="h-4 w-4" />
             </Button>
@@ -92,29 +92,22 @@ export function ContactInfoPanel({ contact, onContactUpdate }: ContactInfoPanelP
         </div>
         
         {/* Profile Picture */}
-        <div className="flex flex-col items-center text-center mb-6">
-          <div className="relative group">
-            <Avatar className="w-24 h-24 mb-4">
+        <div className="flex flex-col items-center text-center mb-4">
+          <div className="relative">
+            <Avatar className="w-20 h-20 mb-3">
               <AvatarImage src={contact.avatar} alt={contact.name} />
-              <AvatarFallback className="bg-accent text-accent-foreground font-bold text-xl">
+              <AvatarFallback className="bg-muted text-foreground font-semibold text-lg">
                 {contact.name.split(' ').map(n => n[0]).join('')}
               </AvatarFallback>
             </Avatar>
             
-            {/* Edit overlay on profile picture */}
-            {isEditing && (
-              <div className="absolute inset-0 bg-background/80 rounded-full flex items-center justify-center cursor-pointer hover:bg-background/90 transition-smooth">
-                <Edit3 className="h-6 w-6 text-foreground" />
-              </div>
-            )}
-            
             {/* Status indicator */}
-            <div className={`absolute bottom-4 right-0 w-6 h-6 ${getStatusColor(contact.status)} rounded-full border-4 border-surface`} />
+            <div className={`absolute bottom-3 right-0 w-5 h-5 ${getStatusColor(contact.status)} rounded-full border-3 border-surface`} />
           </div>
           
           <Badge 
             variant="secondary" 
-            className="bg-surface-elevated text-muted-foreground border-card-border"
+            className="bg-muted text-muted-foreground text-xs"
           >
             {getStatusText(contact.status)}
           </Badge>
@@ -122,11 +115,11 @@ export function ContactInfoPanel({ contact, onContactUpdate }: ContactInfoPanelP
       </div>
       
       {/* Contact Details */}
-      <div className="flex-1 p-6 space-y-6">
+      <div className="flex-1 p-4 space-y-4">
         {isEditing ? (
           <>
             {/* Edit Form */}
-            <div className="space-y-4">
+            <div className="space-y-3">
               <div className="space-y-2">
                 <Label htmlFor="name" className="text-sm font-medium">Name</Label>
                 <div className="relative">
@@ -135,7 +128,7 @@ export function ContactInfoPanel({ contact, onContactUpdate }: ContactInfoPanelP
                     id="name"
                     value={editForm.name}
                     onChange={(e) => setEditForm(prev => ({ ...prev, name: e.target.value }))}
-                    className="pl-10 border-border focus:border-accent transition-smooth"
+                    className="pl-9 border-border focus:border-ring"
                   />
                 </div>
               </div>
@@ -149,7 +142,7 @@ export function ContactInfoPanel({ contact, onContactUpdate }: ContactInfoPanelP
                     type="email"
                     value={editForm.email}
                     onChange={(e) => setEditForm(prev => ({ ...prev, email: e.target.value }))}
-                    className="pl-10 border-border focus:border-accent transition-smooth"
+                    className="pl-9 border-border focus:border-ring"
                   />
                 </div>
               </div>
@@ -162,25 +155,27 @@ export function ContactInfoPanel({ contact, onContactUpdate }: ContactInfoPanelP
                     id="phone"
                     value={editForm.phone}
                     onChange={(e) => setEditForm(prev => ({ ...prev, phone: e.target.value }))}
-                    className="pl-10 border-border focus:border-accent transition-smooth"
+                    className="pl-9 border-border focus:border-ring"
                   />
                 </div>
               </div>
             </div>
             
             {/* Action Buttons */}
-            <div className="flex gap-3 pt-4">
+            <div className="flex gap-2 pt-3">
               <Button 
                 onClick={handleSave}
-                className="flex-1 bg-accent hover:bg-accent-hover text-accent-foreground transition-smooth"
+                size="sm"
+                className="flex-1 bg-accent hover:bg-accent-hover text-accent-foreground"
               >
                 <Save className="h-4 w-4 mr-2" />
                 Save
               </Button>
               <Button 
                 variant="outline" 
+                size="sm"
                 onClick={handleCancel}
-                className="flex-1 border-border hover:bg-surface-elevated transition-smooth"
+                className="flex-1 border-border hover:bg-muted"
               >
                 <X className="h-4 w-4 mr-2" />
                 Cancel
@@ -190,9 +185,9 @@ export function ContactInfoPanel({ contact, onContactUpdate }: ContactInfoPanelP
         ) : (
           <>
             {/* Read-only View */}
-            <div className="space-y-6">
-              <div className="space-y-3">
-                <div className="flex items-center gap-3 p-3 rounded-lg bg-surface-elevated border border-card-border">
+            <div className="space-y-3">
+              <div className="space-y-2">
+                <div className="flex items-center gap-3 p-3 rounded-lg bg-muted border border-card-border">
                   <User className="h-4 w-4 text-muted-foreground" />
                   <div>
                     <p className="text-xs text-muted-foreground uppercase tracking-wide">Name</p>
@@ -200,7 +195,7 @@ export function ContactInfoPanel({ contact, onContactUpdate }: ContactInfoPanelP
                   </div>
                 </div>
                 
-                <div className="flex items-center gap-3 p-3 rounded-lg bg-surface-elevated border border-card-border">
+                <div className="flex items-center gap-3 p-3 rounded-lg bg-muted border border-card-border">
                   <Mail className="h-4 w-4 text-muted-foreground" />
                   <div>
                     <p className="text-xs text-muted-foreground uppercase tracking-wide">Email</p>
@@ -208,7 +203,7 @@ export function ContactInfoPanel({ contact, onContactUpdate }: ContactInfoPanelP
                   </div>
                 </div>
                 
-                <div className="flex items-center gap-3 p-3 rounded-lg bg-surface-elevated border border-card-border">
+                <div className="flex items-center gap-3 p-3 rounded-lg bg-muted border border-card-border">
                   <Phone className="h-4 w-4 text-muted-foreground" />
                   <div>
                     <p className="text-xs text-muted-foreground uppercase tracking-wide">Phone</p>

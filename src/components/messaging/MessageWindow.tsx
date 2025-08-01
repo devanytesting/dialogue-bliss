@@ -34,18 +34,18 @@ function MessageBubble({ message }: { message: Message }) {
   const isSent = message.type === 'sent';
   
   return (
-    <div className={`flex ${isSent ? 'justify-end' : 'justify-start'} mb-4 message-enter`}>
+    <div className={`flex ${isSent ? 'justify-end' : 'justify-start'} mb-3`}>
       <div
         className={`
-          max-w-[70%] px-4 py-3 rounded-2xl shadow-sm
+          max-w-[65%] px-3 py-2 rounded-lg
           ${isSent 
-            ? 'bg-message-sent text-message-sent-foreground rounded-br-md' 
-            : 'bg-message-received text-message-received-foreground rounded-bl-md'
+            ? 'bg-message-sent text-message-sent-foreground rounded-br-sm' 
+            : 'bg-message-received text-message-received-foreground rounded-bl-sm'
           }
         `}
       >
         <p className="text-sm leading-relaxed">{message.content}</p>
-        <p className={`text-xs mt-1 ${isSent ? 'text-message-sent-foreground/70' : 'text-message-received-foreground/70'}`}>
+        <p className={`text-xs mt-1 opacity-70`}>
           {message.timestamp}
         </p>
       </div>
@@ -98,17 +98,17 @@ export function MessageWindow({ contact, messages, onSendMessage }: MessageWindo
   return (
     <div className="flex-1 flex flex-col bg-background">
       {/* Chat Header */}
-      <div className="px-6 py-4 border-b border-card-border bg-surface-elevated">
+      <div className="px-4 py-3 border-b border-card-border bg-surface">
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-3">
             <div className="relative">
-              <Avatar className="w-10 h-10">
+              <Avatar className="w-9 h-9">
                 <AvatarImage src={contact.avatar} alt={contact.name} />
-                <AvatarFallback className="bg-accent text-accent-foreground font-semibold">
+                <AvatarFallback className="bg-muted text-foreground font-medium">
                   {contact.name.split(' ').map(n => n[0]).join('')}
                 </AvatarFallback>
               </Avatar>
-              <div className={`absolute -bottom-1 -right-1 w-3 h-3 ${getStatusColor(contact.status)} rounded-full border-2 border-surface-elevated`} />
+              <div className={`absolute -bottom-0.5 -right-0.5 w-2.5 h-2.5 ${getStatusColor(contact.status)} rounded-full border-2 border-surface`} />
             </div>
             
             <div>
@@ -117,14 +117,14 @@ export function MessageWindow({ contact, messages, onSendMessage }: MessageWindo
             </div>
           </div>
           
-          <div className="flex items-center gap-2">
-            <Button variant="ghost" size="icon" className="hover-lift">
+          <div className="flex items-center gap-1">
+            <Button variant="ghost" size="sm" className="h-8 w-8 p-0">
               <Phone className="h-4 w-4" />
             </Button>
-            <Button variant="ghost" size="icon" className="hover-lift">
+            <Button variant="ghost" size="sm" className="h-8 w-8 p-0">
               <Video className="h-4 w-4" />
             </Button>
-            <Button variant="ghost" size="icon" className="hover-lift">
+            <Button variant="ghost" size="sm" className="h-8 w-8 p-0">
               <MoreVertical className="h-4 w-4" />
             </Button>
           </div>
@@ -132,7 +132,7 @@ export function MessageWindow({ contact, messages, onSendMessage }: MessageWindo
       </div>
       
       {/* Messages Area */}
-      <div className="flex-1 overflow-y-auto scrollbar-thin p-6">
+      <div className="flex-1 overflow-y-auto scrollbar-clean p-4">
         <div className="space-y-1">
           {messages.map((message) => (
             <MessageBubble key={message.id} message={message} />
@@ -142,21 +142,19 @@ export function MessageWindow({ contact, messages, onSendMessage }: MessageWindo
       </div>
       
       {/* Message Input */}
-      <div className="p-6 border-t border-card-border bg-surface-elevated">
-        <div className="flex items-end gap-3">
-          <div className="flex-1">
-            <Input
-              placeholder="Type a message..."
-              value={newMessage}
-              onChange={(e) => setNewMessage(e.target.value)}
-              onKeyPress={handleKeyPress}
-              className="resize-none border-border focus:border-accent transition-smooth bg-background"
-            />
-          </div>
+      <div className="p-4 border-t border-card-border bg-surface">
+        <div className="flex items-center gap-2">
+          <Input
+            placeholder="Type a message..."
+            value={newMessage}
+            onChange={(e) => setNewMessage(e.target.value)}
+            onKeyPress={handleKeyPress}
+            className="border-border focus:border-ring bg-background"
+          />
           <Button 
             onClick={handleSend}
             disabled={!newMessage.trim()}
-            className="bg-accent hover:bg-accent-hover text-accent-foreground transition-smooth hover-lift"
+            className="bg-accent hover:bg-accent-hover text-accent-foreground px-3"
           >
             <Send className="h-4 w-4" />
           </Button>
